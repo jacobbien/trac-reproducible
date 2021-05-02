@@ -70,10 +70,11 @@ g[[5]] <- tibble(yte = yte,
 ) %>% 
   pivot_longer(cols = 2:3, names_to = "lambda") %>% 
   ggplot(aes(x = value, y = yte, color = lambda)) +
-  geom_point(size = 4) + 
+  geom_point(size = 2) + 
   geom_abline(slope = 1, intercept = 0) +
   labs(title = "C: Test Set Performance", x = "Predicted sCD14", y = "Actual sCD14") +
-  theme(legend.position = "bottom")
+  # theme(legend.position = "bottom") +
+  coord_equal()
 
 cor(yte, yhat_te[[1]][, cvfit$cv[[1]]$ibest])
 cor(ytr, yhat_tr[[1]][, cvfit$cv[[1]]$ibest])
