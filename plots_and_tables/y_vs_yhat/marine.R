@@ -32,7 +32,7 @@ large$dat$sample_data$yhat[-large$tr[[1]]] <- large$yhat_te[[1]]$OTU[, i1se]
 
 both <- list(small$dat$sample_data,
              large$dat$sample_data) %>% 
-  set_names(c("FL", "PA")) %>% 
+  set_names(c("Free living", "Particle associated")) %>% 
   bind_rows(.id = "Type")
 both %>%
   ggplot(aes(x = yhat,
@@ -44,6 +44,7 @@ both %>%
        y = "Actual Leucine",
        title = "All Samples") +
   facet_wrap(~ Type) +
+  theme(strip.text = element_text(size = 8)) + 
   coord_fixed() + 
   ggsave("marine.pdf", width = 7.5, height = 3)
 
